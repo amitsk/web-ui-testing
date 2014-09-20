@@ -12,6 +12,8 @@ repositories {
 dependencies {
     // We use Scala 2.11 in our library project
     compile 'org.scala-lang:scala-library:2.11.2'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.43.1'
+    testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.43.1'
 
     // We use Scalatest for testing our library
     testCompile 'junit:junit:4.11'
