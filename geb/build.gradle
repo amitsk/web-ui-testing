@@ -7,10 +7,14 @@ repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    maven {
+        url = 'http://oss.sonatype.org/content/repositories/snapshots'
+    }
 }
 
 ext {
-    seleniumVersion = '2.42.2'
+    seleniumVersion = '2.43.1'
+    spockVersion = '1.0-groovy-2.3-SNAPSHOT'
 }
 // In this section you declare the dependencies for your production and test code
 dependencies {
@@ -18,10 +22,36 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.6'
 
     // We use the awesome Spock testing and specification framework
-    compile 'org.spockframework:spock-core:0.7-groovy-2.0'
+
+    compile "org.spockframework:spock-core:$spockVersion"
+    compile "org.spockframework:spock-report:$spockVersion"
     compile 'junit:junit:4.11'
     compile ( "org.gebish:geb-spock:0.9.3",
             "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion",
+            "org.seleniumhq.selenium:selenium-java:$seleniumVersion",
             "org.seleniumhq.selenium:selenium-support:$seleniumVersion")
+}
 
+test {
+    systemProperties = System.getProperties()
+    systemProperty "geb.build.baseUrl" "http://localhost:8000"
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+
+    testLogging {
+        // set options for log level LIFECYCLE
+        events ["failed"]
+        exceptionFormat "short"
+
+        // set options for log level DEBUG
+        debug {
+            events "started", "skipped", "failed"
+            exceptionFormat "full"
+        }
+
+        // remove standard output/error logging from --info builds
+        // by assigning only 'failed' and 'skipped' events
+        info.events = ["failed", "skipped"]
+    }
 }

@@ -6,6 +6,7 @@
  */
 
 import spock.lang.Specification
+import static spock.util.matcher.HamcrestMatchers.closeTo
 
 class LibraryTest extends Specification{
     def "someLibraryMethod returns true"() {
@@ -15,5 +16,12 @@ class LibraryTest extends Specification{
         def result = lib.someLibraryMethod()
         then:
         result == true
+    }
+
+    def "comparing two decimal numbers"() {
+        def myPi = 3.14
+
+        expect:
+        myPi closeTo(Math.PI, 0.01)
     }
 }
