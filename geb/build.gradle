@@ -34,14 +34,16 @@ dependencies {
 
 test {
     systemProperties = System.getProperties()
-    systemProperty "geb.build.baseUrl" "http://localhost:8000"
+    //systemProperty ("geb.build.baseUrl",  "http://localhost:8000" )
 
-    // show standard out and standard error of the test JVM(s) on the console
-    testLogging.showStandardStreams = true
 
     testLogging {
+        // show standard out and standard error of the test JVM(s) on the console
+       showStandardStreams = true
+
         // set options for log level LIFECYCLE
-        events ["failed"]
+        events "failed"
+
         exceptionFormat "short"
 
         // set options for log level DEBUG
