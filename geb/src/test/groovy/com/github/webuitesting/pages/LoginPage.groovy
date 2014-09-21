@@ -3,10 +3,17 @@ package com.github.webuitesting.pages
 class LoginPage extends BasePage {
 
     static url = "/login/?next=/polls/poll/"
-    static at = { title == "Google" }
+    static at = { title.contains ("Log in" ) }
     static content = {
-        searchField { $("input[name=q]") }
-        searchButton(to: GoogleResultsPage) { $("input[value='Google Search']") }
+        userNameField  { $("input#id_username") }
+        passwordField  { $("input#id_password")  }
+        submit    { $("div.submit-row>input") }
+    }
+
+    void login( String userName, String password) {
+        userNameField.value userName
+        passwordField.value password
+        submit.click()
     }
 
 }

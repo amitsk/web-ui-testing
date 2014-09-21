@@ -59,16 +59,16 @@ function resizeDetailsView() {
       </head>
       <body onresize="resizeDetailsView()">
         <div class="scalatest-report"> 
-          <div id="scalatest-header" class="scalatest-header-passed">
+          <div id="scalatest-header" class="scalatest-header-failed">
       <div id="title">
         ScalaTest Results
       </div>
 
       <div id="summary">
-        <p id="duration">Run completed in 12 seconds, 495 milliseconds.</p>    
-        <p id="totalTests">Total number of tests run: 1</p>
-        <p id="suiteSummary">Suites: completed 1, aborted 0</p>
-        <p id="testSummary">Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0</p>
+        <p id="duration">Run completed in 16 seconds, 818 milliseconds.</p>    
+        <p id="totalTests">Total number of tests run: 2</p>
+        <p id="suiteSummary">Suites: completed 2, aborted 0</p>
+        <p id="testSummary">Tests: succeeded 1, failed 1, canceled 0, ignored 0, pending 0</p>
       </div>
     </div>
           <table id="summary_view">
@@ -81,12 +81,12 @@ function resizeDetailsView() {
                   <tr id="summary_view_row_1_legend_table_row_succeeded">
                     <td id="summary_view_row_1_legend_succeeded_label">Succeeded</td>
                     <td id="summary_view_row_1_legend_succeeded_count">1</td>
-                    <td id="summary_view_row_1_legend_succeeded_percent">(100%)</td>
+                    <td id="summary_view_row_1_legend_succeeded_percent">(50%)</td>
                   </tr>
                   <tr id="summary_view_row_1_legend_table_row_failed">
                     <td id="summary_view_row_1_legend_failed_label">Failed</td>
-                    <td id="summary_view_row_1_legend_failed_count">0</td>
-                    <td id="summary_view_row_1_legend_failed_percent">(0%)</td>
+                    <td id="summary_view_row_1_legend_failed_count">1</td>
+                    <td id="summary_view_row_1_legend_failed_percent">(50%)</td>
                   </tr>
                   <tr id="summary_view_row_1_legend_table_row_canceled">
                     <td id="summary_view_row_1_legend_canceled_label">Canceled</td>
@@ -126,9 +126,18 @@ function resizeDetailsView() {
         <td>Pending</td>
         <td>Total</td>
       </tr>
-    <tr id="0020fa80-5ff0-4bd0-af97-6031cfa22617">
-      <td class="suite_name_passed_all"><a href="javascript: showDetails('com.github.webuitesting.HomePageSpec')">HomePageSpec</a></td>
-      <td class="duration_passed_all">1211</td>
+    <tr id="8951a74f-fb02-46ff-be1d-085c4d4e603a">
+      <td class="suite_name_with_failed"><a href="javascript: showDetails('com.github.webuitesting.HomePageSpec')">HomePageSpec</a></td>
+      <td class="duration_with_failed">766</td>
+      <td class="succeeded_zero">0</td>
+      <td class="failed">1</td>
+      <td class="canceled_zero">0</td>
+      <td class="ignored_zero">0</td>
+      <td class="pending_zero">0</td>
+      <td class="total_with_failed">1</td>
+    </tr><tr id="dabc8c7f-3294-4ba6-81c9-eb62071eff66">
+      <td class="suite_name_passed_all"><a href="javascript: showDetails('com.github.webuitesting.LoginPageSpec')">LoginPageSpec</a></td>
+      <td class="duration_passed_all">5884</td>
       <td class="succeeded">1</td>
       <td class="failed_zero">0</td>
       <td class="canceled_zero">0</td>
@@ -161,7 +170,7 @@ function getBgColor(elementId)
   // Return 0 if both methods failed.
   return 0;
 }
-var data = [1, 0, 0, 0, 0];
+var data = [1, 1, 0, 0, 0];
 var color = [getBgColor('summary_view_row_1_legend_succeeded_label'), 
              getBgColor('summary_view_row_1_legend_failed_label'), 
              getBgColor('summary_view_row_1_legend_ignored_label'), 
@@ -191,7 +200,8 @@ arcs.append("path")
         </script>
         <script type="text/javascript">
           tagMap = { 
-"0020fa80-5ff0-4bd0-af97-6031cfa22617": 1};
+"dabc8c7f-3294-4ba6-81c9-eb62071eff66": 1, 
+"8951a74f-fb02-46ff-be1d-085c4d4e603a": 2};
 applyFilter();
         </script>
         <script type="text/javascript">

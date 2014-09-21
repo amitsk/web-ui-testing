@@ -34,7 +34,7 @@ dependencies {
 
 test {
     systemProperties = System.getProperties()
-    //systemProperty ("geb.build.baseUrl",  "http://localhost:8000" )
+    systemProperty 'geb.build.baseUrl',  'http://localhost:8000'
 
 
     testLogging {

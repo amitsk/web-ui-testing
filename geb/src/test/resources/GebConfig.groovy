@@ -22,3 +22,5 @@ atCheckWaiting = true
 baseNavigatorWaiting = true
 
 reportsDir = "build/geb-reports"
+
+baseUrl = "http://127.0.0.1:8000"
