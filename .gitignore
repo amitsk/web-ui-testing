@@ -31,3 +31,4 @@ Thumbs.db
 *.iml
 *.ipr
 geb/build
+*/target
