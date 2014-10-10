@@ -25,6 +25,7 @@ dependencies {
 
     compile "org.spockframework:spock-core:$spockVersion"
     compile "org.spockframework:spock-report:$spockVersion"
+    compile 'com.athaydes:spock-reports:1.2'
     compile 'junit:junit:4.11'
     compile ( "org.gebish:geb-spock:0.9.3",
             "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion",
@@ -44,7 +45,7 @@ test {
         // set options for log level LIFECYCLE
         events "failed"
 
-        exceptionFormat "short"
+        exceptionFormat "full"
 
         // set options for log level DEBUG
         debug {
