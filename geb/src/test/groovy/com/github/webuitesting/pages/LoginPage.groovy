@@ -2,7 +2,7 @@ package com.github.webuitesting.pages
 
 class LoginPage extends BasePage {
 
-    static url = "/login/?next=/polls/poll/"
+    static url = "/admin/polls/poll/"
     static at = { title.contains ("Log in" ) }
     static content = {
         userNameField  { $("input#id_username") }
