@@ -1,33 +1,36 @@
 package com.github.webuitesting.steps;
 
+import com.jayway.restassured.RestAssured;
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+
+import static com.jayway.restassured.RestAssured.*;
+import static com.jayway.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Created by amit on 10/9/14.
  */
 public class RestServiceStepDefs {
-    @Given("^there are (\\d+) cars available for rental$")
-    public void there_are_cars_available_for_rental(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
+    private Integer id;
+
+
+    @When("^client requests GET /snippets/(\\d+)$")
+    public void client_requests_GET_snippets(int arg1) throws Throwable {
+        RestAssured.baseURI = "http://127.0.0.1";
+        RestAssured.port = 8000;
+        id = given().log().all().get("/snippets/1").jsonPath().getInt("id");
     }
 
-    @When("^I rent one$")
-    public void i_rent_one() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^there will only be (\\d+) cars available for rental$")
-    public void there_will_only_be_cars_available_for_rental(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("^the response is a snippet with id (\\d+)$")
+    public void the_response_is_a_snippet_with_attribute(Integer id) throws Throwable {
+        Assert.assertThat(id, is(id));
     }
 
 }
