@@ -5,21 +5,21 @@ import java.net.URL;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.android.AndroidDriver;
+//import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.iphone.IPhoneDriver;
+//import org.openqa.selenium.iphone.IPhoneDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.opera.core.systems.OperaDriver;
 import com.github.webuitesting.util.Browser;
-import com.github.webuitesting.webdriver.AuthenticatedHtmlUnitDriver;
+//import com.github.webuitesting.webdriver.AuthenticatedHtmlUnitDriver;
 
 import com.github.webuitesting.util.Browser;
 
@@ -92,7 +92,7 @@ public class WebDriverFactory {
 			}
 			
 			capability.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
-		} else if (INTERNET_EXPLORER.equals(browserName)) {
+		} /*else if (INTERNET_EXPLORER.equals(browserName)) {
 
 			capability = DesiredCapabilities.internetExplorer();
 			capability
@@ -119,7 +119,7 @@ public class WebDriverFactory {
 			}
 
 			return webDriver;
-		}
+		}*/
 
 		capability = setVersionAndPlatform(capability, browser.getVersion(),
 				browser.getPlatform());
@@ -177,7 +177,7 @@ public class WebDriverFactory {
             isSupportedPlatform(browser);
             webDriver = new SafariDriver();
 
-        } else if (IPHONE.equals(browser)) {
+        }/* else if (IPHONE.equals(browser)) {
 			try {
 				webDriver = new IPhoneDriver();
 			} catch (Exception e) {
@@ -196,7 +196,7 @@ public class WebDriverFactory {
 			} else {
 				webDriver = new HtmlUnitDriver(true);
 			}
-		}
+		}*/
 
 		return webDriver;
 	}
