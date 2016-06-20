@@ -1,13 +1,14 @@
 package com.github.webuitesting.googletest.pages;
 
 import com.github.webuitesting.pages.BasePage;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.seleniumhq.selenium.fluent.FluentWebDriver;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
@@ -35,10 +36,16 @@ public class HomePage extends BasePage {
         webDriver.get(baseUrl);
     }
 
+    @Override
+    protected void isLoaded() throws Error {
+        assertThat(  webDriver.getTitle().contains("Google")); ;
+    }
 
-    public void search ( String query) {
+
+    public SearchResults search (String query) {
         searchBox.clear();
         searchBox.sendKeys(query);
         searchBox.sendKeys(Keys.RETURN);
+        return new SearchResults( webDriver, baseUrl);
     }
 }

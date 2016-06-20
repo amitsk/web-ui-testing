@@ -10,7 +10,7 @@ import org.seleniumhq.selenium.fluent.FluentWebDriver;
  * Abstract class representation of a Page in the UI. Page object pattern
 
  */
-public abstract class BasePage {
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T>{
 
 	protected WebDriver webDriver;
     protected FluentWebDriver fluentWebDriver;
@@ -26,7 +26,5 @@ public abstract class BasePage {
 		this.baseUrl = baseUrl;
         PageFactory.initElements(webDriver, this);
 	}
-
-    public abstract void load();
 
 }
