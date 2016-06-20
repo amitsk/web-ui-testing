@@ -13,7 +13,7 @@
             </PatternLayout>
         </RandomAccessFile>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{DEFAULT} %p } [%t] %-5level %class{1.} - %msg%n"/>
+            <PatternLayout pattern="%d{DEFAULT} %p [%t] %-5level %class{1.} - %msg%n"/>
         </Console>
     </Appenders>
     <Loggers>
