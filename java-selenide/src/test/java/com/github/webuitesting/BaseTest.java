@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Configuration.AssertionMode.SOFT;
  */
 public class BaseTest {
 
-    static final String extentReportLocation = "target/extentreports/";
+    static final String extentReportLocation = "build/extentreports/";
     protected final ExtentReports extent = new ExtentReports (extentReportLocation + this.getClass().getName() + ".html");
     protected static Config config;
     protected Logger logger = LogManager.getLogger(this.getClass());

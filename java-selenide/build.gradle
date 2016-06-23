@@ -1,12 +1,40 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "ru.d10xa:gradle-allure-plugin:0.5.1"
+    }
+}
+
+apply plugin: 'ru.d10xa.allure'
+
+allure {
+    aspectjweaver = true
+
+    junit = true
+    testNG = false
+    spock = false
+    geb = false
+
+    allureResultsDir = "$buildDir/allure-results"
+    allureReportDir = "$buildDir/allure-report"
+
+    allureVersion = "1.4.22"
+    aspectjVersion = "1.8.9"
+}
+
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
@@ -31,3 +59,5 @@ dependencies {
 
     )
 }
+
+tasks.withType(Test)*.finalizedBy allureReport
