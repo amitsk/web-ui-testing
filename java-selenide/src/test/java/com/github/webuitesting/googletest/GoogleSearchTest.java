@@ -25,8 +25,8 @@ public class GoogleSearchTest extends BaseTest {
         SearchResultsPage results = page.searchFor("selenide");
 
         results.checkResultsSize(10);
-        results.getResults().get(0).shouldHave(text("Selenide: concise UI tests in Java"));
-        extentTest.log(LogStatus.PASS, "Search Returned   " + results.getResults().get(0));
+        results.results().get(0).shouldHave(text("Selenide: concise UI tests in Java"));
+        extentTest.log(LogStatus.PASS, "Search Returned   " + results.results().get(0));
         extent.endTest(extentTest);
     }
 }
