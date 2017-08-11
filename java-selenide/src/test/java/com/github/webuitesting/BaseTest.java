@@ -1,27 +1,19 @@
 package com.github.webuitesting;
 
 import com.codeborne.selenide.Configuration;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.BeforeClass;
 
-import static com.codeborne.selenide.Configuration.AssertionMode.SOFT;
+import org.junit.jupiter.api.BeforeAll;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- * Base class for tests. Common initialization logic for Webdriver.
- */
 public class BaseTest {
 
-    static final String extentReportLocation = "build/extentreports/";
-    protected final ExtentReports extent = new ExtentReports (extentReportLocation + this.getClass().getName() + ".html");
     protected static Config config;
-    protected Logger logger = LogManager.getLogger(this.getClass());
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @BeforeClass
+    @BeforeAll
     public static void setupEnvironmentConfig() {
         Config baseConfig = ConfigFactory.load("application");//Explicitly named, default is also application.conf
         String env = baseConfig.getString("environment");
@@ -36,10 +28,4 @@ public class BaseTest {
         Configuration.browser =  config.getString("browser.name");
     }
 
-
-    @After
-    public void doCleanUp() {
-        extent.flush();
-        extent.close();
-    }
 }
